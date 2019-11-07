@@ -1,11 +1,14 @@
 package br.com.monteiro.hibernate_maven;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
-import br.com.monteiro.hibernate.model.Function;
+import br.com.monteiro.hibernate.model.Funcao;
 
 public class Teste {
 
@@ -14,18 +17,14 @@ public class Teste {
 	
 	public static void main(String[] args) {
 
-//		insertFunction("Capitain");
-//		insertFunction("Cozinheiro");
-//		insertFunction("Navegador");
-//		insertFunction("Médico");
-//		insertFunction("Engenheiro");
-//		insertFunction("Espadachim");
-//		insertFunction("Atirador");
 //		insertFunction("Arqueólogo");
 //		insertFunction("Músico");
+
+		List<Funcao> list = listFuncao();
 		
-		ENTITY_MANAGER_FACTORY.close();
+		for (Funcao funcao : list) { System.out.println(funcao.getId() +"\t"+ funcao.getHierarchy()); }
 		
+		ENTITY_MANAGER_FACTORY.close();	
 			
 	}
 	
@@ -37,7 +36,7 @@ public class Teste {
 			et = ENTITY_MANAGER.getTransaction();
 			et.begin();
 			
-			Function function = new Function();
+			Funcao function = new Funcao();
 			function.setHierarchy(name);
 			
 		
@@ -52,5 +51,12 @@ public class Teste {
 			ENTITY_MANAGER.close();
 		}
 	}
+	
+	public static List<Funcao> listFuncao() {
+    	EntityManager ENTITY_MANAGER = ENTITY_MANAGER_FACTORY.createEntityManager();
+    	String sql = "select f from funcao f ";
+    	TypedQuery<Funcao> query = ENTITY_MANAGER.createQuery(sql, Funcao.class);
+    	return query.getResultList();	
+    }
 
 }

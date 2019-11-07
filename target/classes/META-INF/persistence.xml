@@ -7,7 +7,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 		
 	<persistence-unit name="hibernate-postgres">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>br.com.monteiro.hibernate.model.Function</class>
+		<class>br.com.monteiro.hibernate.model.Funcao</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/hibernate" />
@@ -16,9 +16,25 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
 	</persistence-unit>
+	
+	<!-- <persistence-unit name="tereos">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>br.com.tereos.entity.Kriging</class>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://dbterawspgresqlprd01.cgu10ez65xir.sa-east-1.rds.amazonaws.com/dbterawspgresqlprd01" />
+			<property name="javax.persistence.jdbc.user" value="adminpgresqlprd01" />
+			<property name="javax.persistence.jdbc.password" value="TereospgreSQLprd01" />
+
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+		</properties>
+	</persistence-unit> -->
 
 </persistence>
